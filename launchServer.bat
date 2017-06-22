@@ -16,11 +16,12 @@ SETLOCAL
 :: Clear Screen
 cls
 
-:: General Params (can be replaced with userInput for more generic script)
-set version=0.0.1
-set instanceName=Arma3 Campaign Server
-set installRootDir=C:\Arma3Server
-set serverName=Campaign_Server
+:: General Params
+set scriptVersion=0.0.1
+set instanceName=Arma3 Public Server
+set "installRootDir=C:\Arma3Server"
+:: No spaces in serverName!
+set serverName=Public_Server
 set gamePort=2302
 
 :: Additional Startup Params
@@ -35,8 +36,10 @@ cd %installRootDir%
 
 :observer
 echo (%time%) %instanceName% started.
+
 :: Launch Instance
 start "%instanceName%" /wait /high "arma3server_x64.exe" -port=%gamePort% "-config=%installRootDir%\TADST\%serverName%\TADST_config.cfg" "-cfg=%installRootDir%\TADST\%serverName%\TADST_basic.cfg" "-profiles=%installRootDir%\TADST\Campaign_Server" -name=%serverName% %startupParams% "-mod=%modList%"
+
 :: If server instance crashed or closed
 :: Window needs to stay open for it to work
 echo (%time%) %instanceName% closed or crashed, restarting.
