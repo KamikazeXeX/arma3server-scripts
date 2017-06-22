@@ -65,7 +65,9 @@ echo (%time%) %instanceName% closed or crashed, restarting.
 goto observer
 
 :exit_script
-echo "Exiting Script!"
+echo "Hit any key to exit the script"
+:: Exit Script on key pressed
+pause
 ENDLOCAL
 TIMEOUT /t 5
 GOTO :EOF
